@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Création de fichiers divers</title>
+    <style>
+        /* Global reset and font */
+        body, h1, h2, h3, p, button {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            font-size: 16px;
+            line-height: 1.6;
+            background-color: #f4f4f9;
+            color: #333;
+            padding: 20px;
+        }
+
+        /* Header */
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 10px 0;
+            text-align: center;
+        }
+
+        header img {
+            width: 120px;
+            margin-bottom: 10px;
+        }
+
+        /* Main container */
+        .container {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .container h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        /* File upload and text area */
+        .file-upload {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        input[type="file"] {
+            margin: 10px 0;
+        }
+
+        textarea {
+            width: 100%;
+            height: 150px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-top: 10px;
+        }
+
+        /* Buttons */
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 20px;
+            margin-top: 40px;
+        }
+
+        footer .footer-links {
+            margin-bottom: 10px;
+        }
+
+        footer .footer-links a {
+            color: #fff;
+            margin: 0 10px;
+            text-decoration: none;
+        }
+
+        footer .footer-links a:hover {
+            text-decoration: underline;
+        }
+
+        footer .language-selector {
+            display: inline-block;
+            margin-top: 10px;
+        }
+
+        footer .language-selector img {
+            width: 20px;
+            cursor: pointer;
+        }
+
+        /* Policy section */
+        .policy-section {
+            background-color: #f9f9f9;
+            padding: 20px;
+            margin-top: 20px;
+            border-radius: 5px;
+        }
+
+        .policy-section h3 {
+            margin-bottom: 10px;
+        }
+
+        .policy-section p {
+            margin-bottom: 15px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <img src="https://via.placeholder.com/120x60.png?text=Mon+Logo" alt="Logo" id="logo">
+        <h1>Bienvenue sur le site de création de fichiers</h1>
+    </header>
+
+    <div class="container">
+        <h2>Créez un fichier dans différents formats</h2>
+
+        <div class="file-upload">
+            <h3>Choisissez un fichier à télécharger ou entrez du texte</h3>
+            <input type="file" id="fileInput" />
+            <br>
+            <textarea id="textInput" placeholder="Entrez du texte ici pour générer un fichier..."></textarea>
+            <br>
+            <label for="fileType">Choisissez le format du fichier :</label>
+            <select id="fileType">
+                <option value="pdf">PDF</option>
+                <option value="txt">Texte (.txt)</option>
+                <option value="csv">CSV</option>
+                <option value="json">JSON</option>
+                <option value="html">HTML</option>
+                <option value="xml">XML</option>
+                <option value="xlsx">Excel (.xlsx)</option>
+                <option value="rtf">RTF</option>
+                <option value="md">Markdown (.md)</option>
+                <option value="yaml">YAML</option>
+            </select>
+            <br>
+            <button onclick="generateFile()">Générer le fichier</button>
+        </div>
+    </div>
+
+    <!-- Politique de confidentialité et conditions -->
+    <div class="policy-section">
+        <h3>Politique de Confidentialité</h3>
+        <p>Nous respectons la confidentialité de vos données. Aucune donnée personnelle ne sera collectée sans votre consentement explicite. Nous nous engageons à ne pas vendre ni partager vos informations avec des tiers.</p>
+        
+        <h3>Conditions d'Utilisation</h3>
+        <p>En utilisant ce site, vous acceptez de respecter nos conditions d'utilisation. Toute utilisation abusive ou illégale des services proposés peut entraîner la suspension de votre accès.</p>
+        
+        <h3>Contactez-nous</h3>
+        <p>Pour toute question ou assistance, veuillez nous contacter à l'adresse suivante : contact@monsite.com</p>
+    </div>
+
+    <footer>
+        <div class="footer-links">
+            <a href="#">Politique de confidentialité</a>
+            <a href="#">Conditions d'utilisation</a>
+            <a href="#">Contactez-nous</a>
+        </div>
+        <div class="language-selector">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Flag_of_France.svg/2560px-Flag_of_France.svg.png" alt="Français" title="Français">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/Flag_of_the_United_States.svg/2560px-Flag_of_the_United_States.svg.png" alt="Anglais" title="Anglais">
+        </div>
+        <p>&copy; 2025 Tous droits réservés</p>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script>
+        function generateFile() {
+            const { jsPDF } = window.jspdf;
+            const doc = new jsPDF();
+
+            let textInput = document.getElementById('textInput').value;
+            let fileInput = document.getElementById('fileInput').files[0];
+            let fileType = document.getElementById('fileType').value;
+
+            // Get the current date/time for a unique filename
+            let timestamp = new Date().toISOString().replace(/[:.-]/g, "_");
+
+            if (fileType === 'pdf') {
+                // Generate PDF file
+                if (textInput) {
+                    doc.text(textInput, 10, 10);
+                    doc.save('document_' + timestamp + '.pdf');
+                } else if (fileInput) {
+                    let reader = new FileReader();
+                    reader.onload = function (e) {
+                        let fileText = e.target.result;
+                        doc.text(fileText, 10, 10);
+                        doc.save('document_' + timestamp + '.pdf');
+                    };
+                    reader.readAsText(fileInput);
+                } else {
+                    alert('Veuillez entrer du texte ou télécharger un fichier');
+                }
+            } else if (fileType === 'txt') {
+                // Generate TXT file
+                let fileContent = textInput || (fileInput ? fileInput.name : '');
+                if (fileContent) {
+                    let blob = new Blob([fileContent], { type: 'text/plain' });
+                    let link = document.createElement('a');
+                    link.href = URL.createObjectURL(blob);
+                    link.download = 'document_' + timestamp + '.txt';
+                    link.click();
+                } else {
+                    alert('Veuillez entrer du texte ou télécharger un fichier');
+                }
+            } else if (fileType === 'csv') {
+                // Generate CSV file
+                let csvContent = "data:text/csv;charset=utf-8," + textInput;
+                let link = document.createElement("a");
+                link.setAttribute("href", encodeURI(csvContent));
+                link.setAttribute("download", 'document_' + timestamp + '.csv');
+                link.click();
+            } else if (fileType === 'json') {
+                // Generate JSON file
+                let jsonData = textInput ? { content: textInput } : {};
+                let jsonContent = JSON.stringify(jsonData, null, 2);
+                let blob = new Blob([jsonContent], { type: 'application/json' });
+                let link = document.createElement('a');
+                link.href = URL.createObjectURL(blob);
+                link.download = 'document_' + timestamp + '.json';
+                link.click();
+            } else if (fileType === 'html') {
+                // Generate HTML file
+                let htmlContent = "<html><body><h1>Document HTML</h1><p>" + textInput + "</p></body></html>";
+                let blob = new Blob([htmlContent], { type: 'text/html' });
+                let link = document.createElement('a');
+                link.href = URL.createObjectURL(blob);
+                link.download = 'document_' + timestamp + '.html';
+                link.click();
+            } else if (fileType === 'xml') {
+                // Generate XML file
+                let xmlContent = `<?xml version="1.0" encoding="UTF-8"?>\n<document>\n\t<content>${textInput}</content>\n</document>`;
+                let blob = new Blob([xmlContent], { type: 'application/xml' });
+                let link = document.createElement('a');
+                link.href = URL.createObjectURL(blob);
+                link.download = 'document_' + timestamp + '.xml';
+                link.click();
+            } else if (fileType === 'xlsx') {
+                // Generate XLSX file (using SheetJS)
+                let wb = XLSX.utils.book_new();
+                let ws = XLSX.utils.aoa_to_sheet([[textInput]]);
+                XLSX.utils.book_append_sheet(wb, ws, "Sheet1");
+                XLSX.writeFile(wb, 'document_' + timestamp + '.xlsx');
+            } else if (fileType === 'rtf') {
+                // Generate RTF file
+                let rtfContent = `{\rtf1\ansi\ansicpg1252\uc1 \pard ${textInput} \par}`;
+                let blob = new Blob([rtfContent], { type: 'application/rtf' });
+                let link = document.createElement('a');
+                link.href = URL.createObjectURL(blob);
+                link.download = 'document_' + timestamp + '.rtf';
+                link.click();
+            } else if (fileType === 'md') {
+                // Generate Markdown file
+                let mdContent = `# Document Markdown\n\n${textInput}`;
+                let blob = new Blob([mdContent], { type: 'text/markdown' });
+                let link = document.createElement('a');
+                link.href = URL.createObjectURL(blob);
+                link.download = 'document_' + timestamp + '.md';
+                link.click();
+            } else if (fileType === 'yaml') {
+                // Generate YAML file
+                let yamlContent = `content: |\n  ${textInput.replace(/\n/g, "\n  ")}`;
+                let blob = new Blob([yamlContent], { type: 'application/x-yaml' });
+                let link = document.createElement('a');
+                link.href = URL.createObjectURL(blob);
+                link.download = 'document_' + timestamp + '.yaml';
+                link.click();
+            }
+        }
+    </script>
+
+</body>
+
+</html>
