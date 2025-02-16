@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Création de fichiers divers</title>
     <style>
-        /* Global reset and font */
         body, h1, h2, h3, p, button {
             margin: 0;
             padding: 0;
@@ -21,7 +20,6 @@
             padding: 20px;
         }
 
-        /* Header */
         header {
             background-color: #333;
             color: #fff;
@@ -34,7 +32,6 @@
             margin-bottom: 10px;
         }
 
-        /* Main container */
         .container {
             max-width: 1200px;
             margin: 20px auto;
@@ -48,7 +45,6 @@
             margin-bottom: 20px;
         }
 
-        /* File upload and text area */
         .file-upload {
             text-align: center;
             margin-bottom: 20px;
@@ -67,7 +63,6 @@
             margin-top: 10px;
         }
 
-        /* Buttons */
         button {
             background-color: #4CAF50;
             color: white;
@@ -82,7 +77,6 @@
             background-color: #45a049;
         }
 
-        /* Footer */
         footer {
             background-color: #333;
             color: #fff;
@@ -115,7 +109,6 @@
             cursor: pointer;
         }
 
-        /* Policy section */
         .policy-section {
             background-color: #f9f9f9;
             padding: 20px;
@@ -167,7 +160,6 @@
         </div>
     </div>
 
-    <!-- Politique de confidentialité et conditions -->
     <div class="policy-section">
         <h3>Politique de Confidentialité</h3>
         <p>Nous respectons la confidentialité de vos données. Aucune donnée personnelle ne sera collectée sans votre consentement explicite. Nous nous engageons à ne pas vendre ni partager vos informations avec des tiers.</p>
@@ -187,12 +179,14 @@
         </div>
         <div class="language-selector">
             <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Flag_of_France.svg/2560px-Flag_of_France.svg.png" alt="Français" title="Français">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/Flag_of_the_United_States.svg/2560px-Flag_of-the_United_States.svg.png" alt="Anglais" title="Anglais">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/Flag_of_the_United_States.svg/2560px-Flag_of_the_United_States.svg.png" alt="Anglais" title="Anglais">
         </div>
         <p>&copy; 2025 Tous droits réservés</p>
     </footer>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.1/xlsx.full.min.js"></script>
+
     <script>
         function generateFile() {
             const { jsPDF } = window.jspdf;
